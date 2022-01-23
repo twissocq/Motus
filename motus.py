@@ -85,6 +85,6 @@ class Motus():
                 #Tester les lettres. Attention à ne pas donner trop d'infos (lettres triples ou doubles!)
                 #Mot correct
     
-Jeu =Motus('littre.txt')
+Jeu = Motus('littre.txt')
 
         
