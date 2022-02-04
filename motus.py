@@ -57,7 +57,25 @@ class Motus():
     
     def afficher_grille(self):
         #code couleur : 0 : non trouvé, 2 : bonne lettre, 1 : lettre existante dans le mot
+        '''
+        data = liste de liste de int. Traduction des lettres trouvées ou non
+        liste_mots_input = liste de mots rentrés
+        Prototype :
+            fig, ax = plt.subplots()
+            im = ax.imshow(data)
+            for mot in range(len(liste_mots_input)):
+                for lettre in range(len(liste_mots_input[mot])):
+                    text = ax.text(lettre, mot, liste_mots_input[mot][lettre],
+                       ha="center", va="center", color="w")
+        '''
+        liste_mots_binaires 
+        data = self.liste_mots_binaires
+        data_label = self.liste_mots_input
         
+        cmap = colors.ListedColormap(['red', 'blue', 'orange'])
+        plt.imshow(data, cmpa = cmap)
+    
+    
         fig, ax = plt.subplots()
         Z = []
         for ligne in range(0, self.nombre_essai):
@@ -67,6 +85,31 @@ class Motus():
         fig.tight_layout()
         plt.show()
         return 1
+    
+    # def remplacer_l
+    
+    def check_mot():
+        liste = '_'*self.longueur_choisie
+        liste_binaire = [0]*self.longueur_choisie
+
+        for idx,lettre in enumerate(self.mot_a_trouver):
+            if lettre in self.mot_courant:
+                #
+                
+                if self.mot_courant[idx] == lettre:
+                    liste_binaire[idx] = 2
+                    liste[idx] = lettre
+                else:
+                    
+                
+                
+                
+        for i in range(0, self.longueur_choisie+1):
+            if self.mot_a_trouver[i] == self.mot_courant[i]:
+                liste[i] = self.mot_a_trouver[i]
+                liste_bin[i] = 2
+            
+        
     
     def jouer(self):
                
