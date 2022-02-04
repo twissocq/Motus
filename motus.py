@@ -17,20 +17,34 @@ class Motus():
     def __init__(self, fichier_dico):
 
         self.fichier_dico = fichier_dico
+        self.choix_dico()
         self.liste_mots = self.read_fichier_mots()
         self.mot_a_trouver = self.generer_mot()
         self.nombre_essai = 6
         self.solution_courante = self.mot_a_trouver[0] + '_'*(self.longueur_choisie-1)
         self.historique = ['']*self.nombre_essai    
         self.nombre_essai_restants = 6
-        
-        self.generer_mot()
-        
         self.longueur_choisie = len(self.mot_a_trouver)
         # self.colortable = self.genere_colortable_ini()
-        
-   
-        
+
+    def choix_dico(self):
+        print("Quel dictionnaire voulez vous utiliser ?")
+        print("1 : dictionnaire français")
+        print("2 : dictionnaire ch'ti")
+        print("3 : dictionnaire dunkerquois")
+        choix = input("Votre choix : ")
+
+        if choix == 1:
+            self.fichier_dico = 'littre.txt'
+        elif choix == 2:
+            self.fichier_dico = 'dico_chti.txt'
+        elif choix == 3:
+            self.fichier_dico = 'dico_dk.txt'
+        else:
+            self.fichier_dico = 'littre.txt'
+
+        print("Vous jouez avec le dictionnaire " + self.fichier_dico.split('.')[0])
+        print("Bonne chance!")
         
     def read_fichier_mots(self):
         #Renvoie 
@@ -69,7 +83,7 @@ class Motus():
         liste_mots_input = liste de mots rentrés
         Prototype :
         '''
-        print(data, liste_mots_input)
+        # print(data, liste_mots_input)
         name = 'grille_' + str(self.nombre_essai-self.nombre_essai_restants) + '.png'
         fig, ax = plt.subplots()
         cmap = colors.ListedColormap(['red', 'blue', 'orange'])
@@ -99,16 +113,10 @@ class Motus():
         self.nombre_essai_restants = self.nombre_essai
         code_couleur = [[2] + [0 for p in range(len(self.mot_a_trouver)-1)]]
         data = copy.deepcopy(code_couleur)
-        code_couleur_temp=copy.deepcopy(data[0])
-        
-        couleur_neutre = code_couleur[0]
-        
-        liste_mots_input = [tofind[0] + ' '*(len(self.mot_a_trouver)-1)]
-        
-        
-        
-        self.afficher_grille(data, liste_mots_input)
-        
+        code_couleur_temp=copy.deepcopy(data[0])        
+        couleur_neutre = code_couleur[0]        
+        liste_mots_input = [tofind[0] + ' '*(len(self.mot_a_trouver)-1)]    
+        self.afficher_grille(data, liste_mots_input)        
         
         while (not found) and (self.nombre_essai_restants>0):
             essai +=1
@@ -147,8 +155,8 @@ class Motus():
             display = ''
             for i in range(len(result)):
                 display += result[i]
-            print(display)
-            print(result)
+            # print(display)
+            # print(result)
             
             for idx, lettre in enumerate(result):
                 if lettre == 'o':
@@ -186,7 +194,7 @@ class Motus():
                 #Mot correct
     
 Jeu = Motus('littre.txt')
-print(Jeu.mot_a_trouver)
+# print(Jeu.mot_a_trouver)
 Jeu.jouer()
 # Jeu.jouer()
         
