@@ -31,7 +31,7 @@ while not found :
 					tofind_list[il] = '?'
 
 
-	display = ' '
+	display = ''
 	for i in range(len(result)):
 		display += result[i]
 	print(display)
